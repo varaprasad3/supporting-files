@@ -1,0 +1,30 @@
+Swagger
+----------
+
+Dependencies
+--------------
+Swagger ui
+Swagger2
+
+Annotation
+-------------
+@EnableSwagger2
+
+String title = "Shopping Cart" ;
+String description = "The application design contains three modules one is for the customers who wish to buy the products. And another is for the merchants who maintain and updates the information regarding the product. And third is for admin who can manage both customer and merchant.\n The end-user to use this product are the common people for whom the application is to be hosted on the web and the admin maintains the database\n The application that is deployed on the customer’s database like RDBMS, the information regarding the items is highlighted and forwarded from the database for the customer (front view) based on the choice through the menu list and based on all these searches and transactions the database of all the products is updated at the end of each transaction." ;
+String version = "1.0" ;
+String termofservice = "https://jspiders.com" ;
+Contact contact = new Contact ( "Jspiders" , "https://jspiders.com/" , "enquiry@jspiders.com" ) ;
+String licence = "Licence Active" ;
+String licenceUrl = "https://www.jspiders.com/" ;
+List < VendorExtension > vendorExtensions = new ArrayList < VendorExtension > ( ) ;
+
+ApiInfo apiInfo = new ApiInfo ( title , description , version , termofservice , contact , licence , licenceUrl,vendorExtensions ) ;
+
+@ Bean
+Docket myDocket ( )
+{
+	return new Docket ( DocumentationType.SWAGGER_2 ).select ( )
+			.apis ( RequestHandlerSelectors.basePackage ( "com.jspiders.shoppingcart" ) ).build ( )
+			.apiInfo ( apiInfo ) ;
+}
